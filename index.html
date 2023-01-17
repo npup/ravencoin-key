@@ -7,9 +7,10 @@
         <title>test page</title>
     </head>
     <body>
+        <h1>öppna konsolen och se</h1>
         <script type="module">
-            import * as rck from "/dist/index.js";
-            console.log("rck", rck);
+            import { generateMnemonic } from "/dist/index.js";
+            console.log("generateMnemonic() =>", generateMnemonic());
         </script>
     </body>
 </html>
