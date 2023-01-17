@@ -1,4 +1,4 @@
-# ravencoin-key
+# rcktest
 
 Generate Ravencoin addresses from a mnemonic phrase following the standards BIP32, BIP39, BIP44.
 

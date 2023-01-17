@@ -1,44 +1,58 @@
 {
-  "name": "@ravenrebels/ravencoin-key",
-  "version": "2.0.0",
-  "description": "Generate Ravencoin addresses from mnemonic code. BIP32, BIP39, BIP44",
-  "source": "index.ts",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
-  "types": "dist/types.d.ts",
-  "scripts": {
-    "browserify": "browserify ./dist/main.js  --standalone RavencoinKey -o ./dist/RavencoinKey.js",
-    "build": "npx parcel build && npm run browserify",
-    "test": "jest ./test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ravenrebels/ravencoin-key.git"
-  },
-  "keywords": [
-    "Ravencoin",
-    "BIP44",
-    "BIP39"
-  ],
-  "author": "Raven Rebels / Dick Henrik Larsson",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ravenrebels/ravencoin-key/issues"
-  },
-  "homepage": "https://github.com/ravenrebels/ravencoin-key#readme",
-  "dependencies": {
-    "bip39": "^3.0.4",
-    "coininfo": "^5.2.1",
-    "coinkey": "^3.0.0",
-    "hdkey": "^2.0.1"
-  },
-  "devDependencies": {
-    "@parcel/packager-ts": "^2.6.2",
-    "@parcel/transformer-typescript-types": "^2.6.2",
-    "@types/hdkey": "^2.0.1",
-    "@types/node": "^18.0.3",
-    "browserify": "^17.0.0",
-    "jest": "^28.1.2",
-    "parcel": "^2.6.2"
-  }
+    "name": "rcktest",
+    "type": "module",
+    "version": "3.0.0",
+    "description": "Generate Ravencoin addresses from mnemonic code. BIP32, BIP39, BIP44",
+    "source": "index.ts",
+    "main": "./dist/index.umd.cjs",
+    "module": "./dist/index.js",
+    "exports": {
+        ".": {
+            "require": "./dist/index.umd.cjs",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist/*"
+    ],
+    "scripts": {
+        "build": "vite build",
+        "prebuild": "npm run clean",
+        "clean": "rm -rf dist",
+        "pub": "npm publish --dry-run",
+        "start": "http-server ./",
+        "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/npup/ravencoin-key.git"
+    },
+    "keywords": [
+        "Ravencoin",
+        "BIP44",
+        "BIP39"
+    ],
+    "author": "Raven Rebels / Dick Henrik Larsson",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/npup/ravencoin-key/issues"
+    },
+    "homepage": "https://github.com/npup/ravencoin-key#readme",
+    "dependencies": {
+        "bip39": "^3.0.4",
+        "coininfo": "^5.2.1",
+        "coinkey": "^3.0.0",
+        "hdkey": "^2.0.1"
+    },
+    "devDependencies": {
+        "@types/hdkey": "^2.0.1",
+        "@types/jest": "^29.2.5",
+        "@types/node": "^18.0.3",
+        "jest": "^29.3.1",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.9.4",
+        "vite": "^4.0.4",
+        "vite-plugin-dts": "^1.7.1",
+        "vite-plugin-node-polyfills": "^0.7.0"
+    }
 }
